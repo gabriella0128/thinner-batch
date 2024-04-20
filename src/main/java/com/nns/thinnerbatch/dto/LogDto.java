@@ -17,15 +17,15 @@ public class LogDto {
 	@NoArgsConstructor
 	@AllArgsConstructor
 	public static class Info {
-		private Long logIdx;
-		private String traceId;
-		private String httpMessage;
-		private String httpMethod;
-		private String uri;
-		private String log;
-		private Long userIdx;
-		private String userKey;
-		private LocalDateTime createDt;
+		public Long logIdx;
+		public String traceId;
+		public String httpMessage;
+		public String httpMethod;
+		public String uri;
+		public String log;
+		public Long userIdx;
+		public String userKey;
+		public LocalDateTime createDt;
 
 
 	}

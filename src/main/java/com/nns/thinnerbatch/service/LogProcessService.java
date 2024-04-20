@@ -29,5 +29,14 @@ public class LogProcessService {
 				,LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(), 0, 0)
 			);
 
+		// List<LogDto.Info> byCreateDt = logService.findByCreateDt(
+		// 	LocalDateTime.of(2024, 4, 15, 0, 0),
+		// 	LocalDateTime.of(2024, 4, 15, 23, 59)
+		// );
+
+		// System.out.println(byCreateDt.size());
+		//
+		// return byCreateDt;
+
 	}
 }
