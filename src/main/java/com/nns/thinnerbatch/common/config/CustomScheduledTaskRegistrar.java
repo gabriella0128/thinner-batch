@@ -13,8 +13,6 @@ import org.springframework.scheduling.config.ScheduledTask;
 import org.springframework.scheduling.config.ScheduledTaskHolder;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 
-import io.micrometer.core.lang.Nullable;
-
 public class CustomScheduledTaskRegistrar implements ScheduledTaskHolder, InitializingBean, DisposableBean {
 	private final ScheduledTaskRegistrar registrar = new ScheduledTaskRegistrar();
 	protected final Map<String, ScheduledTask> container = new ConcurrentHashMap<>();
@@ -23,7 +21,7 @@ public class CustomScheduledTaskRegistrar implements ScheduledTaskHolder, Initia
 		this.registrar.setTaskScheduler(taskScheduler);
 	}
 
-	public void setScheduler(@Nullable Object scheduler) {
+	public void setScheduler(Object scheduler) {
 		this.registrar.setScheduler(scheduler);
 	}
 

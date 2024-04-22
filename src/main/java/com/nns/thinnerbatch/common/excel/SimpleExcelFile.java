@@ -24,11 +24,12 @@ public class SimpleExcelFile<T> {
 	private Sheet sheet;
 	private SimpleExcelMetaData excelMetaData;
 
-	private String fileName = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + "_log.xlsx";
+	private String fileName;
 	private String outPath = "output/" + fileName;
 
-	public SimpleExcelFile(List<T> data, Class<T> type){
+	public SimpleExcelFile(List<T> data, Class<T> type, String fileName){
 		validateMaxRow(data);
+		this.fileName = fileName;
 		this.workbook = new SXSSFWorkbook();
 		this.excelMetaData = new SimpleExcelMetaData(type);
 		renderExcel(data);

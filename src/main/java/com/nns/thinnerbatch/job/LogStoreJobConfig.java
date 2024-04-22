@@ -1,5 +1,7 @@
 package com.nns.thinnerbatch.job;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -42,12 +44,7 @@ public class LogStoreJobConfig {
 
 	private final JobRepository jobRepository;
 	private final PlatformTransactionManager transactionManager;
-	private final ExcelStepListener excelStepListener;
-
 	private final LogProcessService logProcessService;
-
-	private final LogMapper logMapper;
-
 
 	@Bean
 	public Job logStoreJob(){
@@ -97,8 +94,8 @@ public class LogStoreJobConfig {
 		return items -> {
 			List<LogDto.Info> logDtos = new ArrayList<>();
 			items.forEach(logDtos::add);
-
-			SimpleExcelFile<LogDto.Info> excelFile = new SimpleExcelFile<>(logDtos, LogDto.Info.class);
+			String fileName = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + "_log.xlsx";
+			SimpleExcelFile<LogDto.Info> excelFile = new SimpleExcelFile<>(logDtos, LogDto.Info.class, fileName);
 			excelFile.write();
 
 		};

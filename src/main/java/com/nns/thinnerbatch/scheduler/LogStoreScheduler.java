@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.nns.thinnerbatch.common.config.CustomScheduledTaskRegistrar;
 import com.nns.thinnerbatch.job.LogStoreJobConfig;
+import com.nns.thinnerbatch.service.dtoService.CronService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -26,6 +27,8 @@ public class LogStoreScheduler {
 	private final LogStoreJobConfig logStoreJobConfig;
 	private final JobLauncher jobLauncher;
 	private final CustomScheduledTaskRegistrar registrar;
+
+	private final CronService cronService;
 
 	@Bean
 	public void logStoreScheduler(){
@@ -43,7 +46,7 @@ public class LogStoreScheduler {
 						 JobInstanceAlreadyCompleteException e) {
 					throw new RuntimeException(e);
 				}
-			}, ""));
+			}, cronService.findOptionalCronByCronIdx(1L).get().getCronExpression()));
 
 	}
 

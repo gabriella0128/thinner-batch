@@ -14,9 +14,7 @@ public class SimpleExcelMetaData {
 	List<String> dataFieldNames = new ArrayList<>();
 	public <T> SimpleExcelMetaData(Class<T> type){
 		Field[] fields = type.getFields();
-		System.out.println(fields.length);
 		for(Field field : fields){
-			System.out.println(field.getName());
 			map.put(field.getName(), field.getName());
 			dataFieldNames.add(field.getName());
 		}
